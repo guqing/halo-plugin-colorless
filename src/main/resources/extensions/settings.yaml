@@ -1,0 +1,23 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: plugin-colorless-setting
+spec:
+  forms:
+    - group: basic
+      label: 基本设置
+      formSchema:
+        - $formkit: radio
+          name: scope
+          label: 作用范围
+          value: false
+          attrs:
+            icon: rss
+          options:
+            - value: true
+              label: 全站
+            - value: false
+              label: 仅首页
+        - $formkit: date
+          name: selfCloseAt
+          label: 到期自动关闭

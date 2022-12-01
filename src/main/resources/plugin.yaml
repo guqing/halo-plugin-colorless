@@ -12,6 +12,8 @@ spec:
   logo: logo.svg
   homepage: https://github.com/guqing/halo-plugin-colorless
   displayName: 无色界
+  settingName: plugin-colorless-setting
+  configMapName: plugin-colorless-config
   description: 让 Halo 所有主题都失去色彩，展示为灰白效果。
   license:
     - name: "MIT"
