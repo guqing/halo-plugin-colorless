@@ -11,6 +11,8 @@ import lombok.Data;
 public class BasicSetting {
     public static final String GROUP = "basic";
 
+    private Boolean enable;
+
     private Boolean scope;
 
     private LocalDate selfCloseAt;

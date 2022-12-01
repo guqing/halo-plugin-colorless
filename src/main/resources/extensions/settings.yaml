@@ -8,11 +8,18 @@ spec:
       label: 基本设置
       formSchema:
         - $formkit: radio
+          name: enable
+          label: 是否开启
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: radio
           name: scope
           label: 作用范围
           value: false
-          attrs:
-            icon: rss
           options:
             - value: true
               label: 全站

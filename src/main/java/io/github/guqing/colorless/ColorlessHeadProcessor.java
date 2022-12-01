@@ -27,9 +27,14 @@ public class ColorlessHeadProcessor implements TemplateHeadProcessor {
         BasicSetting basicSetting = settingFetcher.fetch(BasicSetting.GROUP, BasicSetting.class)
             .orElse(new BasicSetting());
 
+        if (BooleanUtils.isNotTrue(basicSetting.getEnable())) {
+            // disabled
+            return Mono.empty();
+        }
+
         LocalDate selfCloseAt = basicSetting.getSelfCloseAt();
         if (selfCloseAt != null && selfCloseAt.isBefore(LocalDate.now())) {
-            // close already
+            // expired already
             return Mono.empty();
         }
 
