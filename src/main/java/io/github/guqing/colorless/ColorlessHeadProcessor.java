@@ -12,7 +12,6 @@ import org.thymeleaf.processor.element.IElementModelStructureHandler;
 import reactor.core.publisher.Mono;
 import run.halo.app.plugin.SettingFetcher;
 import run.halo.app.theme.dialect.TemplateHeadProcessor;
-import run.halo.app.theme.router.strategy.ModelConst;
 
 @Component
 @AllArgsConstructor
@@ -38,7 +37,7 @@ public class ColorlessHeadProcessor implements TemplateHeadProcessor {
             return Mono.empty();
         }
 
-        String templateId = (String) context.getVariable(ModelConst.TEMPLATE_ID);
+        String templateId = (String) context.getVariable("_templateId");
         boolean onlyIndex = BooleanUtils.isNotTrue(basicSetting.getScope());
         if (onlyIndex && !StringUtils.equals("index", templateId)) {
             return Mono.empty();

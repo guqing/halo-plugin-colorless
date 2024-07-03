@@ -4,8 +4,7 @@ metadata:
   name: plugin-colorless
 spec:
   enabled: true
-  version: 1.0.0-v1alpha.1
-  requires: ">=2.0.0"
+  requires: ">=2.13.0"
   author:
     name: guqing
     website: https://github.com/guqing
