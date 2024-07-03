@@ -1,8 +1,8 @@
 package io.github.guqing.colorless;
 
-import org.pf4j.PluginWrapper;
 import org.springframework.stereotype.Component;
 import run.halo.app.plugin.BasePlugin;
+import run.halo.app.plugin.PluginContext;
 
 /**
  * @author guqing
@@ -11,15 +11,7 @@ import run.halo.app.plugin.BasePlugin;
 @Component
 public class ColorlessPlugin extends BasePlugin {
 
-    public ColorlessPlugin(PluginWrapper wrapper) {
-        super(wrapper);
-    }
-
-    @Override
-    public void start() {
-    }
-
-    @Override
-    public void stop() {
+    public ColorlessPlugin(PluginContext pluginContext) {
+        super(pluginContext);
     }
 }
