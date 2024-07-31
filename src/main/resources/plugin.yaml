@@ -2,6 +2,8 @@ apiVersion: plugin.halo.run/v1alpha1
 kind: Plugin
 metadata:
   name: plugin-colorless
+  annotations:
+    store.halo.run/app-id: "app-IbqRW"
 spec:
   enabled: true
   requires: ">=2.13.0"
@@ -9,10 +11,13 @@ spec:
     name: guqing
     website: https://github.com/guqing
   logo: logo.svg
-  homepage: https://github.com/guqing/halo-plugin-colorless
+  homepage: https://www.halo.run/store/apps/app-IbqRW
+  repo: https://github.com/guqing/halo-plugin-colorless
+  issues: https://github.com/guqing/halo-plugin-colorless/issues
   displayName: 无色界
   settingName: plugin-colorless-setting
   configMapName: plugin-colorless-config
   description: 让 Halo 所有主题都失去色彩，展示为灰白效果。
   license:
-    - name: "MIT"
+    - name: "GPL-3.0"
+      url: "https://github.com/guqing/halo-plugin-colorless/blob/main/LICENSE"
