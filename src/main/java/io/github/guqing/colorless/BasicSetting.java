@@ -1,11 +1,16 @@
 package io.github.guqing.colorless;
 
 import java.time.LocalDate;
+import java.util.List;
 import lombok.Data;
 
 /**
- * @author guqing
+ * @author guqing,8butubb 
  * @since 2.0.0
+ * 
+ * 修改说明:
+ * - 修改了原有的设置结构，增加了对自启动时间的支持。
+ * - 增加 selfStartAt 字段
  */
 @Data
 public class BasicSetting {
@@ -15,5 +20,6 @@ public class BasicSetting {
 
     private Boolean scope;
 
-    private LocalDate selfCloseAt;
+    private LocalDate selfStartAt; // 自启动时间
+    private LocalDate selfCloseAt; // 自关闭时间
 }
