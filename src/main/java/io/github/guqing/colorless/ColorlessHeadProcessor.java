@@ -27,24 +27,37 @@ public class ColorlessHeadProcessor implements TemplateHeadProcessor {
             .defaultIfEmpty(new BasicSetting())
             .doOnNext(basicSetting -> {
                 if (BooleanUtils.isNotTrue(basicSetting.getEnable())) {
-                    // disabled
+                    // 如果插件未启用，直接返回
                     return;
                 }
 
-                LocalDate selfCloseAt = basicSetting.getSelfCloseAt();
-                if (selfCloseAt != null && selfCloseAt.isBefore(LocalDate.now())) {
-                    // expired already
+                LocalDate now = LocalDate.now(); // 获取当前时间
+                LocalDate selfStartAt = basicSetting.getSelfStartAt(); // 获取自启动时间
+                LocalDate selfCloseAt = basicSetting.getSelfCloseAt(); // 获取自关闭时间
+
+                // 检查当前时间是否在自启动和自关闭时间之间
+                if ((selfStartAt != null && now.isBefore(selfStartAt)) ||
+                    (selfCloseAt != null && now.isAfter(selfCloseAt))) {
+                    // 不在自启动时间段内，直接返回
+                    return;
+                }
+
+                LocalDate selfCloseAtSetting = basicSetting.getSelfCloseAt(); // 过期检查
+                if (selfCloseAtSetting != null && selfCloseAtSetting.isBefore(LocalDate.now())) {
+                    // 如果已过期，直接返回
                     return;
                 }
 
                 String templateId = (String) context.getVariable("_templateId");
                 boolean onlyIndex = BooleanUtils.isNotTrue(basicSetting.getScope());
                 if (onlyIndex && !StringUtils.equals("index", templateId)) {
+                    // 如果只在首页有效且当前模板不是首页，直接返回
                     return;
                 }
-                String s = htmlGrayFilter();
+
+                String s = htmlGrayFilter(); // 获取灰色滤镜的 CSS
                 IModelFactory modelFactory = context.getModelFactory();
-                model.add(modelFactory.createText(s));
+                model.add(modelFactory.createText(s)); // 将样式添加到模型中
             })
             .then();
     }

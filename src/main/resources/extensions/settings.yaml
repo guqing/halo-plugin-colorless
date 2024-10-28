@@ -26,5 +26,8 @@ spec:
             - value: false
               label: 仅首页
         - $formkit: date
+          name: selfStartAt
+          label: 到期自动开启
+        - $formkit: date
           name: selfCloseAt
           label: 到期自动关闭
